@@ -1,0 +1,16 @@
+{
+    "extends": "eslint:recommended",
+    "plugins": [
+        "standard",
+        "promise"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "env": {
+        "es6": true,
+        "amd": true,
+        "node": true
+
+    }
+}
