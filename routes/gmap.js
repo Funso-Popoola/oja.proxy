@@ -25,4 +25,19 @@ router.get('/autocomplete', async function(req, res, next) {
   }
 });
 
+router.get('/geocode', async function(req, res, next) {
+  if (!req.query.address) {
+    next(new Error("The query 'address' is not specified!"));
+    return;
+  }
+  let query = { address: req.query.address };
+  try{
+    let response = await googleMapsClient.geocode(query).asPromise();
+    res.setHeader('Content-Type', 'application/json');
+    res.json(response.json.results);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
